@@ -13086,6 +13086,7 @@ Units on Exam:</p>
 <li><a href="#Iteration">Iteration</a><ul>
 <li><a href="#For-Loop-Syntax">For Loops</a></li>
 <li><a href="#While-Loop-Syntax">While Loops</a></li>
+<li><a href="#Searching-and-Sorting">Searching and Sorting</a></li>
 </ul>
 </li>
 <li><a href="#Writing-Classes">Writing Classes</a><ul>
@@ -13756,9 +13757,9 @@ log10(1000) -&gt; log10(): 3.0
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>random in [0.0, 1.0) -&gt; random(): 0.8071778482751435
-random in [0.0, 5.0) -&gt; random() * 5: 1.0189372844688345
-random in [-1.0, 1.0) -&gt; random() * 2 - 1.0: -0.47063556640953963
+<pre>random in [0.0, 1.0) -&gt; random(): 0.1373309264115663
+random in [0.0, 5.0) -&gt; random() * 5: 2.1038970109982618
+random in [-1.0, 1.0) -&gt; random() * 2 - 1.0: 0.7678465968088832
 </pre>
 </div>
 </div>
@@ -13865,7 +13866,7 @@ Math.E: 2.718281828459045
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number you entered: 4
+<pre>Number you entered: 3
 </pre>
 </div>
 </div>
@@ -14361,6 +14362,239 @@ Pizzas: 10
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Searching-and-Sorting">Searching and Sorting<a class="anchor-link" href="#Searching-and-Sorting">&#182;</a></h3><h4 id="Searching:-Iterative-Search">Searching: Iterative Search<a class="anchor-link" href="#Searching:-Iterative-Search">&#182;</a></h4><p>With regards to searching an unsorted list, or even a small/medium unsorted one, the best way is a simple loop through each element. Note the amount of time this method takes is linearly proportional to the length of the list. An array with 10x more elements will, on average, take 10x longer.</p>
+<p><em>Note: If you are unfamiliar with the fundamentals of arrays and ArrayLists, read about them <a href="#Arrays">here</a></em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">searchMe</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">591</span><span class="p">,</span> <span class="mi">52</span><span class="p">};</span>
+<span class="n">Integer</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// Note the order of the conditions: if you reached the end, don&#39;t bother to check the array or it&#39;ll be out of bounds</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">searchMe</span><span class="p">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">searchMe</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">target</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// Either the index is equal to the length, or we found the element</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">searchMe</span><span class="p">.</span><span class="na">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Target not found&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Target found at index &quot;</span> <span class="o">+</span> <span class="n">index</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Target found at index 5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Sorting:-Selection-Sort">Sorting: Selection Sort<a class="anchor-link" href="#Sorting:-Selection-Sort">&#182;</a></h4><p>Selection sort is one of the main sorting algorithms in APCS, and it is straightforward when analyzed step by step.</p>
+<ol>
+<li>Split the list into sorted and unsorted, and initially all elements are unsorted</li>
+<li>Find the minimum in the unsorted part</li>
+<li>Swap it with the leftmost element in the unsorted part</li>
+<li>That element is now sorted, go to step 2 until you reach the second to last</li>
+<li>The final one is sorted because the rest are</li>
+</ol>
+<p>Split, Minimum, Swap, Repeat</p>
+<p>In practice, this is pretty easy to implement. Keep in mind we have the for loop wrapped around steps 2 and 3 to go from the start to the end of the list. Additionally, if you are wondering about the method, read the section on <a href="#Writing-Methods">writing methods</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Step 1: Split into sorted/unsorted</span>
+    <span class="c1">// We use sortedIndex as our marker</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">sortedIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">sortedIndex</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">sortedIndex</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Step 2: Find minimum in unsorted section</span>
+        <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="n">sortedIndex</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">sortedIndex</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">[</span><span class="n">minIndex</span><span class="o">]</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">minIndex</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">// i is now the index of the minimum in the unsorted section</span>
+
+        <span class="c1">// Step 3: Swap the first unsorted with the minimum</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">sortedIndex</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">sortedIndex</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">minIndex</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">arr</span><span class="o">[</span><span class="n">minIndex</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="c1">// Add a print statement to show the list at each iteration</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">arr</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kt">int</span><span class="o">[]</span> <span class="n">sortMe</span> <span class="o">=</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">55</span><span class="p">};</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Unsorted: &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">sortMe</span><span class="p">));</span>
+<span class="n">selectionSort</span><span class="p">(</span><span class="n">sortMe</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sorted: &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">sortMe</span><span class="p">));</span>
+
+<span class="kt">int</span><span class="o">[]</span> <span class="n">sortMe</span> <span class="o">=</span> <span class="p">{</span><span class="mi">39</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">59</span><span class="p">};</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\nUnsorted: &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">sortMe</span><span class="p">));</span>
+<span class="n">selectionSort</span><span class="p">(</span><span class="n">sortMe</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sorted: &quot;</span> <span class="o">+</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">sortMe</span><span class="p">));</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Unsorted: [4, 17, 84, 55]
+[4, 17, 84, 55]
+[4, 17, 84, 55]
+[4, 17, 55, 84]
+Sorted: [4, 17, 55, 84]
+
+Unsorted: [39, 24, 12, 0, 59]
+[0, 24, 12, 39, 59]
+[0, 12, 24, 39, 59]
+[0, 12, 24, 39, 59]
+[0, 12, 24, 39, 59]
+Sorted: [0, 12, 24, 39, 59]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Sorting:-Insertion-Sort">Sorting: Insertion Sort<a class="anchor-link" href="#Sorting:-Insertion-Sort">&#182;</a></h4><p>Insertion sort is also straightforward, and somewhat more efficient than selection sort. It is very similar, here are the steps:</p>
+<ol>
+<li>Mark the first element as sorted</li>
+<li>Look at the first unsorted element, <code>X</code></li>
+<li>Search the sorted section right to left until you find an element, <code>Y</code>, smaller than <code>X</code></li>
+<li>Insert <code>X</code> to the right of <code>Y</code>, and move the barrier between unsorted and sorted</li>
+<li>Go to step 2 until the whole list is sorted</li>
+</ol>
+<p>Note that this is best implemented with an arraylist because of the insertion involved.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">aList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Step 1 &amp; 5</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">sortedIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">sortedIndex</span> <span class="o">&lt;</span> <span class="n">aList</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">sortedIndex</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Step 2</span>
+        <span class="c1">// The element to be moved is at sortedIndex, its potential spot is newIndex</span>
+        <span class="kt">int</span> <span class="n">newIndex</span> <span class="o">=</span> <span class="n">sortedIndex</span><span class="p">;</span>
+        
+        <span class="c1">// Step 3</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">newIndex</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">aList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">newIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">aList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">sortedIndex</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">newIndex</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Step 4</span>
+        <span class="c1">// Now we are either at index 0 or the new position for the element to be moved</span>
+        <span class="n">aList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">newIndex</span><span class="p">,</span> <span class="n">aList</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">sortedIndex</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">sortArr</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">};</span>
+<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">sortAL</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">sortArr</span><span class="p">));</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Unsorted: &quot;</span> <span class="o">+</span> <span class="n">sortAL</span><span class="p">);</span>
+<span class="n">insertionSort</span><span class="p">(</span><span class="n">sortAL</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sorted: &quot;</span> <span class="o">+</span> <span class="n">sortAL</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Unsorted: [-4, 63, 35, 3, 20, 44, -40]
+Sorted: [-40, -4, 3, 20, 35, 44, 63]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Writing-Classes">Writing Classes<a class="anchor-link" href="#Writing-Classes">&#182;</a></h2><p>This is by far one of the most intricate topics in APCS, so it is important to have a good intuition of the topic.</p>
 <p>Before we get into classes, let's do a quick review of writing methods.</p>
 
@@ -14412,7 +14646,7 @@ Pizzas: 10
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Returns a random number between a and b exclusive</span>
@@ -14443,7 +14677,7 @@ Pizzas: 10
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>7 5 6 3 2 8 6 2 8 4 5 2 9 2 7 8 4 5 2 5 </pre>
+<pre>5 9 1 7 4 1 9 7 4 9 3 4 1 5 3 6 8 3 7 1 </pre>
 </div>
 </div>
 
@@ -14461,7 +14695,7 @@ Pizzas: 10
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Reverses an array of ints</span>
@@ -14519,7 +14753,7 @@ Reversed!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// For convenience, I will not make the instance fields private. Know that they 100% should be private.</span>
@@ -14568,7 +14802,7 @@ Reversed!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">Dog</span> <span class="n">lily</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Lily&quot;</span><span class="p">);</span>
@@ -14628,7 +14862,7 @@ Reversed!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">Dog</span> <span class="n">lily</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Lily&quot;</span><span class="p">);</span>
@@ -14707,7 +14941,7 @@ woof
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">Dog</span> <span class="n">lily</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Dog</span><span class="p">(</span><span class="s">&quot;Lily&quot;</span><span class="p">);</span>
@@ -14732,7 +14966,7 @@ woof
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Lily (Dog)
-java.lang.Object@6df4a7da
+java.lang.Object@581191dc
 </pre>
 </div>
 </div>
@@ -14751,7 +14985,7 @@ java.lang.Object@6df4a7da
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Vector</span> <span class="p">{</span>
@@ -14817,7 +15051,7 @@ java.lang.Object@6df4a7da
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">Vector</span> <span class="n">V1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
@@ -14886,7 +15120,7 @@ V1.scale(2): (2, 4)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Initialize blank</span>
@@ -14918,7 +15152,7 @@ V1.scale(2): (2, 4)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;arr[2]: &quot;</span> <span class="o">+</span> <span class="n">arr</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
@@ -14984,7 +15218,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Make an array of names</span>
@@ -15024,7 +15258,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Print every name</span>
@@ -15058,7 +15292,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Print the names backwards</span>
@@ -15091,7 +15325,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Reverse the array itself</span>
@@ -15130,7 +15364,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Add a clarification to all the names</span>
@@ -15177,7 +15411,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">ArrayList</span> <span class="n">al</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="p">();</span> <span class="c1">// creating old non-generic arraylist</span>
@@ -15215,7 +15449,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">Integer</span><span class="o">[]</span> <span class="n">testCases</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
@@ -15229,7 +15463,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// for each loop (works on arrays and arraylists) to add all values of testCases to nums</span>
@@ -15245,7 +15479,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// for an arraylist named nums containing: [1, 2, 3, 4, 5]</span>
@@ -15289,7 +15523,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// for an arraylist named nums containing: [1, 2, 2, 3, 4, 5]</span>
@@ -15340,7 +15574,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// solutions for code ex</span>
@@ -15387,7 +15621,7 @@ arr[2]: 100
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Solution - While loop:&quot;</span><span class="p">);</span>
