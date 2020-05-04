@@ -13096,6 +13096,7 @@ Units on Exam:</p>
 <li><a href="#Arrays">Arrays</a></li>
 <li><a href="#ArrayLists">ArrayLists</a></li>
 </ol>
+<p><a href="#FRQ-Examples">FRQ Examples</a></p>
 <p>Units not on 2020 exam (still important):</p>
 <ol>
 <li>2D Arrays</li>
@@ -13757,9 +13758,9 @@ log10(1000) -&gt; log10(): 3.0
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>random in [0.0, 1.0) -&gt; random(): 0.1373309264115663
-random in [0.0, 5.0) -&gt; random() * 5: 2.1038970109982618
-random in [-1.0, 1.0) -&gt; random() * 2 - 1.0: 0.7678465968088832
+<pre>random in [0.0, 1.0) -&gt; random(): 0.2534280364111593
+random in [0.0, 5.0) -&gt; random() * 5: 2.9365475533907266
+random in [-1.0, 1.0) -&gt; random() * 2 - 1.0: -0.05742384815488166
 </pre>
 </div>
 </div>
@@ -13866,7 +13867,7 @@ Math.E: 2.718281828459045
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number you entered: 3
+<pre>Number you entered: 4
 </pre>
 </div>
 </div>
@@ -14677,7 +14678,7 @@ Sorted: [-40, -4, 3, 20, 35, 44, 63]
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>5 9 1 7 4 1 9 7 4 9 3 4 1 5 3 6 8 3 7 1 </pre>
+<pre>9 7 2 8 1 5 1 6 8 8 5 5 2 5 3 7 9 6 7 9 </pre>
 </div>
 </div>
 
@@ -14966,7 +14967,7 @@ woof
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Lily (Dog)
-java.lang.Object@581191dc
+java.lang.Object@1571597b
 </pre>
 </div>
 </div>
@@ -15662,6 +15663,382 @@ arr[2]: 100
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="FRQ-Examples">FRQ Examples<a class="anchor-link" href="#FRQ-Examples">&#182;</a></h1><p>Here are some previous year's FRQ's done and explained</p>
+<p>These explanations cover our thought processes as we did the FRQ (including mistakes) in hopes that you can implement some of our tactics with analyzing the problem, solving it, and dealing with any setbacks.</p>
+<p><strong>NOTE:</strong> Everyone has their own style of writing code and its best to use what's most comfortable for you. Just because it worked for us does not necessarily mean it is ideal for you. As a result, use these examples as a way to get insight on how we think through some of these FRQs and see how you can apply it to your own methods.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// 2019 FRQ 1</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">APCalendar</span> <span class="p">{</span>
+
+    <span class="c1">// part a</span>
+
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">numberOfLeapYears</span><span class="p">(</span><span class="kt">int</span> <span class="n">year1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">year2</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">year1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">year2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">isLeapYear</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">counter</span><span class="p">;</span>
+   <span class="p">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dayOfWeek</span><span class="p">(</span><span class="kt">int</span> <span class="n">month</span><span class="p">,</span> <span class="kt">int</span> <span class="n">day</span><span class="p">,</span> <span class="kt">int</span> <span class="n">year</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">startDay</span> <span class="o">=</span> <span class="n">firstDayOfYear</span><span class="p">(</span><span class="n">year</span><span class="p">);</span>
+      
+      <span class="kt">int</span> <span class="n">numDay</span> <span class="o">=</span> <span class="n">dayOfYear</span><span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">year</span><span class="p">);</span>
+      
+      <span class="k">return</span> <span class="p">(</span><span class="n">startDay</span> <span class="o">+</span> <span class="p">(</span><span class="n">numDay</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">%</span> <span class="mi">7</span><span class="p">;</span>
+   <span class="p">}</span>
+   
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isLeapYear</span><span class="p">(</span><span class="kt">int</span> <span class="n">year</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+   
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">firstDayOfYear</span><span class="p">(</span><span class="kt">int</span> <span class="n">year</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+      
+   <span class="p">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">dayOfYear</span><span class="p">(</span><span class="kt">int</span> <span class="n">month</span><span class="p">,</span> <span class="kt">int</span> <span class="n">day</span><span class="p">,</span> <span class="kt">int</span> <span class="n">year</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numberOfLeapYears</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mi">2005</span><span class="p">));</span> <span class="c1">//2003, 2004, 2005 (should be one)</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numberOfLeapYears</span><span class="p">(</span><span class="mi">2003</span><span class="p">,</span> <span class="mi">2010</span><span class="p">));</span> <span class="c1">//(should be two)</span>
+
+      
+   <span class="p">}</span>
+   
+   
+
+
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Explanation">Explanation<a class="anchor-link" href="#Explanation">&#182;</a></h1><h2 id="Part-A:-numberOfLeapYears">Part A: numberOfLeapYears<a class="anchor-link" href="#Part-A:-numberOfLeapYears">&#182;</a></h2><h3 id="Question-Overview">Question Overview<a class="anchor-link" href="#Question-Overview">&#182;</a></h3><p>The requirements of the question are as follows:</p>
+<ul>
+<li>Count the number of leap years between year 1 and year 2</li>
+<li>Implement the isLeapYear method which returns if a specific year is a leap year or not</li>
+</ul>
+<h3 id="Thought-Process:">Thought Process:<a class="anchor-link" href="#Thought-Process:">&#182;</a></h3><p>isLeapYear is a boolean and therefore its implementation is probably with an if statement
+if we follow this path of using the if statement, then we we will most likely need to iterate through the range of years and count how many of those years are leap years</p>
+<h3 id="Implementation:">Implementation:<a class="anchor-link" href="#Implementation:">&#182;</a></h3><p>I personally jumped in and wrote a quick for loop that would implement my thought process:</p>
+
+<pre><code>for (int i = year1; i &lt; year2; i++) {
+         if (isLeapYear(i)) {
+            counter++;
+         }
+      }</code></pre>
+<p>And then I added in the code bits that would declare and return the counter variable.</p>
+<p>I also added a dummy method isLeapYear() to quickly test if my code could compile. I also noticed 
+that I could quickly test if my code worked so I added a short main method. <strong>Do note that this may not work for this year's AP Test.</strong></p>
+<h2 id="Part-B:">Part B:<a class="anchor-link" href="#Part-B:">&#182;</a></h2><h3 id="Question-Overview">Question Overview<a class="anchor-link" href="#Question-Overview">&#182;</a></h3><p>The requirements of the question are as follows:</p>
+<ul>
+<li>return an integer that represents the day of the week a day is on (0 for sunday, 1 for monday, etc.)</li>
+<li>Implement the firstDayOfYear method which returns which day of the week a year starts on</li>
+<li>Implement dayOfYear which returns n which represents the nth day of the year given the specified date</li>
+</ul>
+<h3 id="Thought-Process:">Thought Process:<a class="anchor-link" href="#Thought-Process:">&#182;</a></h3><p>It's asking about days of the week:</p>
+<ul>
+<li>Its asking to represent them from 0 - 6</li>
+<li>There are 7 days in a week
+Therefore, the question is more than likely going to use mod 7 in some way </li>
+</ul>
+<p>Now what other information do we have?</p>
+<ol>
+<li>we know which day of the week is the first day of the given year (which is in mod 7)</li>
+<li>we know how many days are between the first day and our specified day of the year (dayOfYear - 1 to not overcount day 1)</li>
+</ol>
+<p>What can we do with that?</p>
+<p>if we put the 2nd piece of information in mod 7, we know which day of the week it falls on relative to day 1.</p>
+<ul>
+<li>eg if they were to be on the same day, it would end up being 0 mod 7</li>
+</ul>
+<p>so if we simply add the 2 we could get the actual position in the week.
+$startDay + (numDay - 1) \% 7$</p>
+<p>To verify this, I checked limiting cases (i.e. making startDay and numDay - 1 as large and as small as possible).
+I soon found a problem as it might go over 7 as the mod only acts on the second term (i.e. startDay = 6, numDay - 1 = 5 % 7, total = 11)</p>
+<p>so to fix that we could do this instead:
+$(startDay + numDay - 1) \% 7$</p>
+<h3 id="Implementation:">Implementation:<a class="anchor-link" href="#Implementation:">&#182;</a></h3><p>lets implement the first method: <code>int startDay = firstDayOfYear(year);</code></p>
+<p>same thing for the second: <code>int numDay = dayOfYear(month, day, year);</code></p>
+<p>now return the math: <code>return (startDay + (numDay - 1)) % 7;</code></p>
+<p>I couldn't see a quick way to test this so I simply added dummy methods and made sure the code compiled.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// 2019 FRQ B</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StepTracker</span> <span class="p">{</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">activeDays</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalSteps</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">minSteps</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalDays</span><span class="p">;</span>
+   
+   <span class="kd">public</span> <span class="nf">StepTracker</span><span class="p">(</span><span class="kt">int</span> <span class="n">minSteps</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">minSteps</span> <span class="o">=</span> <span class="n">minSteps</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">activeDays</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">totalSteps</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">totalDays</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span>
+   
+   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">activeDays</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">activeDays</span><span class="p">;</span>
+   <span class="p">}</span> 
+   
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addDailySteps</span><span class="p">(</span><span class="kt">int</span> <span class="n">dailySteps</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">dailySteps</span> <span class="o">&gt;=</span> <span class="n">minSteps</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">activeDays</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+      
+      <span class="n">totalSteps</span> <span class="o">+=</span> <span class="n">dailySteps</span><span class="p">;</span>
+      <span class="n">totalDays</span><span class="o">++</span><span class="p">;</span>
+      
+   <span class="p">}</span>
+   
+   <span class="kd">public</span> <span class="kt">double</span> <span class="nf">averageSteps</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">totalDays</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">totalSteps</span> <span class="o">/</span> <span class="n">totalDays</span><span class="p">;</span>
+   <span class="p">}</span>
+   
+   <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">StepTracker</span> <span class="n">tr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StepTracker</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="na">activeDays</span><span class="p">());</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="na">averageSteps</span><span class="p">());</span>
+      <span class="n">tr</span><span class="p">.</span><span class="na">addDailySteps</span><span class="p">(</span><span class="mi">9000</span><span class="p">);</span>
+      <span class="n">tr</span><span class="p">.</span><span class="na">addDailySteps</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="na">activeDays</span><span class="p">());</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="na">averageSteps</span><span class="p">());</span>
+      <span class="n">tr</span><span class="p">.</span><span class="na">addDailySteps</span><span class="p">(</span><span class="mi">13000</span><span class="p">);</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="na">activeDays</span><span class="p">());</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tr</span><span class="p">.</span><span class="na">averageSteps</span><span class="p">());</span>
+   <span class="p">}</span>
+   
+   
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Explanation">Explanation<a class="anchor-link" href="#Explanation">&#182;</a></h1><h2 id="Requirements:">Requirements:<a class="anchor-link" href="#Requirements:">&#182;</a></h2><ul>
+<li>StepTracker: creates an instance of StepTracker and passes the minimum steps for an "active day"</li>
+<li>addDailySteps: adds how many steps taken in a day and if its over the minimum step threshold, make today an active day</li>
+<li>activeDays: return the number of active days</li>
+<li>averageSteps: returns the average number of steps per day</li>
+</ul>
+<h2 id="Process:">Process:<a class="anchor-link" href="#Process:">&#182;</a></h2><p>Based on the requirements, I created 3 instance variables to serve as placeholders to fulfill those requirements:</p>
+
+<pre><code>private int activeDays;
+private double averageSteps;
+private int minSteps;</code></pre>
+<p>Next I created the constructor to satisfy the minSteps requirement and set everything else to 0.</p>
+
+<pre><code>public StepTracker(int minSteps) {
+      this.minSteps = minSteps;
+      this.activeDays = 0;
+      this.averageSteps = 0;
+}</code></pre>
+<p>Now I implemented the addDailySteps method:</p>
+<ul>
+<li>I checked to see if it was greater than or equal to minSteps and if it was it would increment active days
+<pre><code>public void addDailySteps(int dailySteps) {
+    if (dailySteps &gt;= minSteps) {
+       activeDays++;
+    }
+}</code></pre>
+Then as I was trying to figure out how this could update average steps, I realized that with my current instance variables, it wouldn't be easy to figure out the average steps.</li>
+</ul>
+<p>So then I split up averageSteps into totalDays and totalSteps, changed my constructor, and finished addDailySteps():</p>
+
+<pre><code>public void addDailySteps(int dailySteps) {
+      if (dailySteps &gt;= minSteps) {
+         activeDays++;
+      }
+
+      totalSteps += dailySteps;
+      totalDays++;
+
+   }</code></pre>
+<p>From there, activeDays and averageSteps were basically trivial:</p>
+
+<pre><code>public int activeDays() {
+      return activeDays;
+} 
+
+public double averageSteps() {
+      return (double) totalSteps / totalDays;
+}</code></pre>
+<p>Then I quickly took a few of the methods from the example to test the functionality of my class:</p>
+
+<pre><code>public static void main(String[] args) {
+      StepTracker tr = new StepTracker(10000);
+      System.out.println(tr.activeDays());
+      System.out.println(tr.averageSteps());
+      tr.addDailySteps(9000);
+      tr.addDailySteps(5000);
+      System.out.println(tr.activeDays());
+      System.out.println(tr.averageSteps());
+      tr.addDailySteps(13000);
+      System.out.println(tr.activeDays());
+      System.out.println(tr.averageSteps());
+}</code></pre>
+<p>Interestingly, the second print returned NaN and I realized that before incrementing totalDays I would be trying to divide by zero.</p>
+<p>So I updated averageSteps() and called it a day:</p>
+
+<pre><code>public double averageSteps() {
+      if (totalDays == 0) {
+         return 0;
+      }
+      return (double) totalSteps / totalDays;
+}</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.*</span><span class="p">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Delimiters</span> <span class="p">{</span>
+
+   <span class="kd">private</span> <span class="n">String</span> <span class="n">openDel</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="n">String</span> <span class="n">closeDel</span><span class="p">;</span>
+   <span class="kd">public</span> <span class="nf">Delimiters</span><span class="p">(</span><span class="n">String</span> <span class="n">open</span><span class="p">,</span> <span class="n">String</span> <span class="n">close</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">openDel</span> <span class="o">=</span> <span class="n">open</span><span class="p">;</span>
+      <span class="n">closeDel</span> <span class="o">=</span> <span class="n">close</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="c1">// part a</span>
+   <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getDelimitersList</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">tokens</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">delList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">str</span> <span class="p">:</span> <span class="n">tokens</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">openDel</span><span class="p">)</span> <span class="o">||</span> <span class="n">str</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">closeDel</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">delList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">delList</span><span class="p">;</span>
+   <span class="p">}</span>
+
+
+   <span class="c1">// part b</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isBalanced</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">delimiters</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">open</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">closed</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">str</span> <span class="p">:</span> <span class="n">delimiters</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">openDel</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">open</span><span class="o">++</span><span class="p">;</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">closed</span><span class="o">++</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">closed</span> <span class="o">&gt;</span> <span class="n">open</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+         <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">open</span> <span class="o">==</span> <span class="n">closed</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Explanation">Explanation<a class="anchor-link" href="#Explanation">&#182;</a></h1><h2 id="Part-A:">Part A:<a class="anchor-link" href="#Part-A:">&#182;</a></h2><h3 id="Requirements:">Requirements:<a class="anchor-link" href="#Requirements:">&#182;</a></h3><ul>
+<li>Get an array of Strings</li>
+<li>Add all instances of delimeters to an arraylist of strings and return it</li>
+</ul>
+<h3 id="Thought-Process:">Thought Process:<a class="anchor-link" href="#Thought-Process:">&#182;</a></h3><p>We can probably just iterate through the array and do some if to add the delimeters to the arraylist</p>
+<h3 id="Implementation:">Implementation:<a class="anchor-link" href="#Implementation:">&#182;</a></h3><p>Since we only care about the values of the array, we can use a for-each loop:</p>
+
+<pre><code>for (String str : tokens) {
+
+}</code></pre>
+<p>Now we need the if statement:</p>
+
+<pre><code>if (str.equals(openDel) || str.equals(closeDel)) {
+
+}</code></pre>
+<p>Now we need to add it to an arraylist that I forgot to declare at the start;</p>
+
+<pre><code>ArrayList&lt;String&gt; delList = new ArrayList&lt;String&gt;();
+for (String str : tokens) {
+    if (str.equals(openDel) || str.equals(closeDel)) {
+        delList.add(str);
+    }
+}</code></pre>
+<p>Now we just add the return statement: <code>return delList;</code></p>
+<p>To check the code, I wrote the constructor and instance fields they had and compiled the code.</p>
+<h2 id="Part-B:">Part B:<a class="anchor-link" href="#Part-B:">&#182;</a></h2><h3 id="Requirements:">Requirements:<a class="anchor-link" href="#Requirements:">&#182;</a></h3><ul>
+<li>Make sure there is no point on the arraylist where there are more closed delimeters than open delimeters (when iterating through)</li>
+<li>Make sure that there are the same amount of open and closed delimeters</li>
+</ul>
+<h3 id="Process:">Process:<a class="anchor-link" href="#Process:">&#182;</a></h3><p>We are probably going to need 2 counters to be able to complete the requirements.
+From there we can iterate through the arraylist and check things as we go.</p>
+<h3 id="Implementation:">Implementation:<a class="anchor-link" href="#Implementation:">&#182;</a></h3><p>Create the 2 counters:</p>
+
+<pre><code>int open = 0;
+int closed = 0;</code></pre>
+<p>Iterate through the for loop and update the counters:</p>
+
+<pre><code>for (String str : delimiters) {
+    if (str.equals(openDel)) {
+        open++;
+    } else {
+        closed++;
+}</code></pre>
+<p>Now we need to satisfy the first condition and since <code>closed</code> only changes value whenever it gets incremented, we can insert the check then.</p>
+
+<pre><code>else {
+    closed++;
+    if (closed &gt; open) {
+        return false;
+    }
+}</code></pre>
+<p>Now we just need to satisfy the second condition (remember boolean zen): <code>return open == closed;</code></p>
+
+</div>
+</div>
 </div>
     </div>
   </div>
